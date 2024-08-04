@@ -1,6 +1,10 @@
-from django.urls import path
-from .views import *
+from django.urls import path, include
+from .views import CarViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'cars', CarViewSet)
 
 urlpatterns = [
-    path('', name='api-url'),
+    path('', include(router.urls)),
 ]

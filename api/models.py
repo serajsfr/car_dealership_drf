@@ -9,3 +9,5 @@ class Car(models.Model):
     price = models.IntegerField()
     image = models.ImageField()
     
+    def __str__(self):
+        return self.name
