@@ -13,3 +13,6 @@ class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
     permission_classes = [permissions.IsAuthenticated, IsAuthorOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

@@ -5,6 +5,7 @@ class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
         fields = [
+            'id',
             'name',
             'description',
             'brand',
