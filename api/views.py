@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from rest_framework import permissions, viewsets
+from rest_framework import viewsets, permissions
 from .serializers import CarSerializer
 from .models import Car
+from .permissions import IsAuthorOrReadOnly
 
 
 # Create your views here.
@@ -11,4 +12,4 @@ class CarViewSet(viewsets.ModelViewSet):
     """
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsAuthorOrReadOnly]
